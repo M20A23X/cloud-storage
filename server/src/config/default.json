@@ -1,5 +1,6 @@
 {
   "serverPort": 5000,
   "dbUrl": "mongodb+srv://admin:123@cloud-storage.jr11v.mongodb.net/?retryWrites=true&w=majority&appName=cloud-storage",
-  "secretKey": "oihgaer9ghq03ht4uji00fq3ihgqu59h48g9huh5p3"
+  "secretKey": "oihgaer9ghq03ht4uji00fq3ihgqu59h48g9huh5p3",
+  "filePath": "files"
 }
