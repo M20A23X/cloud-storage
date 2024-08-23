@@ -3,6 +3,9 @@
 **/dist
 **/build
 
+# Storage
+**/files
+
 # Env
 **/.env*
 **/keys
