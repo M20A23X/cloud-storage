@@ -5,6 +5,7 @@
 
 # Storage
 **/files
+**/server/static
 
 # Env
 **/.env*
