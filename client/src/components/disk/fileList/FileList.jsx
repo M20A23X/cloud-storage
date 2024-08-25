@@ -16,7 +16,10 @@ const FileList = () => {
 
     if (fileView === "plate") {
         return (
-            <div className='fileplate'><File key={file._id} file={file}/>
+            <div className='fileplate'>
+                {files.map(file =>
+                    <File key={file._id} file={file}/>
+                )}
             </div>
         )
     }
@@ -25,9 +28,9 @@ const FileList = () => {
         return (
             <div className='filelist'>
                 <div className="filelist__header">
-                    <div className="filelist__name">Название</div>
-                    <div className="filelist__date">Дата</div>
-                    <div className="filelist__size">Размер</div>
+                    <div className="filelist__name">Name</div>
+                    <div className="filelist__date">Date</div>
+                    <div className="filelist__size">Size</div>
                 </div>
                 <TransitionGroup>
                     {files.map(file =>
