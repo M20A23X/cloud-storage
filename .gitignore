@@ -11,6 +11,10 @@
 **/.env*
 **/keys
 
+# CSS
+**/*.css
+**/*.css.map
+
 # Tests
 **/coverage
 **/.nyc_output
