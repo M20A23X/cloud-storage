@@ -26,13 +26,13 @@ function App() {
                         <Routes>
                             <Route path="/registration" element={<Registration/>}/>
                             <Route path="/login" element={<Login/>}/>
-                            <Navigate to="/login"/>
+                            <Route path="*" element={<Navigate to="/login"/>}/>
                         </Routes>
                         :
                         <Routes>
                             <Route exact path="/" element={<Disk/>}/>
                             <Route exact path="/profile" element={<Profile/>}/>
-                            <Navigate to="/"/>
+                            <Route path="*" element={<Navigate to="/"/>}/>
                         </Routes>
                     }
                 </div>
