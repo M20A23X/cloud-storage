@@ -5,7 +5,9 @@ const User = require('../models/User')
 const File = require('../models/File')
 const Uuid = require('uuid')
 
+/// Summary: processes requests for file management
 class FileController {
+    /// Summary: creates a new dir
     async createDir(req, res) {
         try {
             const {name, type, parent} = req.body
@@ -28,6 +30,7 @@ class FileController {
         }
     }
 
+    /// Summary: gets all user files
     async getFiles(req, res) {
         try {
             const {sort} = req.query
@@ -53,6 +56,7 @@ class FileController {
         }
     }
 
+    /// Summary: uploads a new file
     async uploadFile(req, res) {
         try {
             const file = req.files.file
@@ -97,6 +101,7 @@ class FileController {
         }
     }
 
+    /// Summary: downloads the file
     async downloadFile(req, res) {
         try {
             const file = await File.findOne({_id: req.query.id, user: req.user.id})
@@ -111,6 +116,7 @@ class FileController {
         }
     }
 
+    /// Summary: deletes the file
     async deleteFile(req, res) {
         try {
             const file = await File.findOne({_id: req.query.id, user: req.user.id})
@@ -126,6 +132,7 @@ class FileController {
         }
     }
 
+    /// Summary: searches for the file
     async searchFile(req, res) {
         try {
             const searchName = req.query.search
@@ -138,6 +145,7 @@ class FileController {
         }
     }
 
+    /// Summary: uploads avatar for the user profile
     async uploadAvatar(req, res) {
         try {
             const file = req.files.file
@@ -153,6 +161,7 @@ class FileController {
         }
     }
 
+    /// Summary: deletes avatar of the user profile
     async deleteAvatar(req, res) {
         try {
             const user = await User.findById(req.user.id)

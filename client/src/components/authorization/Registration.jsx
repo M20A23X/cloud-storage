@@ -3,6 +3,7 @@ import './authorization.css'
 import Input from "../../utils/input";
 import {registration} from "../../actions/users";
 
+/// Summary: registration form
 const Registration = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")

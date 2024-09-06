@@ -10,6 +10,7 @@ import avatarLogo from '../../assets/img/avatar.svg'
 import {API_URL} from "../../config";
 
 
+/// Summary: navbar
 const Navbar = () => {
     const isAuth = useSelector(state => state.user.isAuth)
     const currentDir = useSelector(state => state.files.currentDir)
@@ -19,6 +20,7 @@ const Navbar = () => {
     const [searchTimeout, setSearchTimeout] = useState(false)
     const avatar = currentUser.avatar ? `${API_URL + currentUser.avatar}` : avatarLogo
 
+    /// Summary: searchs for a file by name
     function searchChangeHandler(e) {
         setSearchName(e.target.value)
         if (searchTimeout != false) {

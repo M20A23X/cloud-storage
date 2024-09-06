@@ -4,6 +4,7 @@ import {useSelector} from "react-redux";
 import File from "./file/File";
 import {CSSTransition, TransitionGroup} from "react-transition-group";
 
+/// Summary: file list
 const FileList = () => {
     const files = useSelector(state => state.files.files)
     const fileView = useSelector(state => state.files.view)
@@ -14,6 +15,7 @@ const FileList = () => {
         )
     }
 
+    /// View: plate
     if (fileView === "plate") {
         return (
             <div className='fileplate'>
@@ -24,6 +26,7 @@ const FileList = () => {
         )
     }
 
+    /// View: list
     if (fileView === 'list') {
         return (
             <div className='filelist'>

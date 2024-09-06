@@ -3,6 +3,7 @@ import './uploader.css';
 import {useDispatch} from "react-redux";
 import {removeUploadFile} from "../../../reducers/uploadReducer";
 
+/// Summary: file uploader
 const UploadFile = ({file}) => {
     const dispatch = useDispatch()
 

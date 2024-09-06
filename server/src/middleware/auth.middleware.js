@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 const config = require('config')
 
+/// Summary: authentication check (JWT)
 module.exports = (req, res, next) => {
     if (req.method === 'OPTIONS') {
         return next()

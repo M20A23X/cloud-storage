@@ -1,6 +1,7 @@
 const {Schema, model, ObjectId} = require("mongoose")
 
 
+/// Summary: User entity
 const User = new Schema({
     email: {type: String, required: true, unique: true},
     password: {type: String, required: true},

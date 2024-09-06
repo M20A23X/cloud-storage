@@ -4,6 +4,7 @@ import './authorization.css'
 import Input from "../../utils/input";
 import {login} from "../../actions/users";
 
+/// Summary: login form
 const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")

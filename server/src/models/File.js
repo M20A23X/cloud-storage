@@ -1,6 +1,7 @@
 const {model, Schema, ObjectId} = require('mongoose')
 
 
+/// Summary: File entity
 const File = new Schema({
     name: {type: String, required: true},
     type: {type: String, required: true},

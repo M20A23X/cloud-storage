@@ -9,6 +9,7 @@ const authMiddleware = require('../middleware/auth.middleware')
 const fileService = require('../services/fileService')
 const File = require('../models/File')
 
+/// Summary: POST /registration, registers a new user
 router.post('/registration',
     [
         check('email', "Incorrect email").isEmail(),
@@ -37,6 +38,7 @@ router.post('/registration',
     })
 
 
+/// Summary: POST /login, logs in the user
 router.post('/login',
     async (req, res) => {
         try {
@@ -66,6 +68,7 @@ router.post('/login',
         }
     })
 
+/// Summary: GET /auth, authenticates user on page load
 router.get('/auth', authMiddleware,
     async (req, res) => {
         try {

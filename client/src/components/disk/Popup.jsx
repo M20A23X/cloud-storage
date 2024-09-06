@@ -4,12 +4,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {setPopupDisplay} from "../../reducers/fileReducer";
 import {createDir} from "../../actions/file";
 
+/// Summary: popup
 const Popup = () => {
     const [dirName, setDirName] = useState('')
     const popupDisplay = useSelector(state => state.files.popupDisplay)
     const currentDir = useSelector(state => state.files.currentDir)
     const dispatch = useDispatch()
 
+    /// Summary: creates a new dir
     function createHandler() {
         dispatch(createDir(currentDir, dirName))
     }

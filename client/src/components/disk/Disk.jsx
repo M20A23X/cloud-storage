@@ -7,6 +7,7 @@ import Popup from "./Popup";
 import {setCurrentDir, setFileView, setPopupDisplay} from "../../reducers/fileReducer";
 import Uploader from "./uploader/Uploader";
 
+/// Summary: disk view
 const Disk = () => {
     const dispatch = useDispatch()
     const currentDir = useSelector(state => state.files.currentDir)
@@ -15,36 +16,43 @@ const Disk = () => {
     const [dragEnter, setDragEnter] = useState(false)
     const [sort, setSort] = useState('type')
 
+    /// Gets files on component load
     useEffect(() => {
         dispatch(getFiles(currentDir, sort))
     }, [currentDir, sort])
 
+    /// Summary: shows popup
     function showPopupHandler() {
         dispatch(setPopupDisplay('flex'))
     }
 
+    /// Summary: goes to a higher dir level
     function backClickHandler() {
         const backDirId = dirStack.pop()
         dispatch(setCurrentDir(backDirId))
     }
 
+    /// Summary: uploads target files
     function fileUploadHandler(event) {
         const files = [...event.target.files]
         files.forEach(file => dispatch(uploadFile(file, currentDir)))
     }
 
+    /// Summary: starts drag'n'drop
     function dragEnterHandler(event) {
         event.preventDefault()
         event.stopPropagation()
         setDragEnter(true)
     }
 
+    /// Summary: ends drag'n'drop
     function dragLeaveHandler(event) {
         event.preventDefault()
         event.stopPropagation()
         setDragEnter(false)
     }
 
+    /// Summary: uploads target files
     function dropHandler(event) {
         event.preventDefault()
         event.stopPropagation()
@@ -53,6 +61,7 @@ const Disk = () => {
         setDragEnter(false)
     }
 
+    // Show loader
     if (loader) {
         return (
             <div className="loader">

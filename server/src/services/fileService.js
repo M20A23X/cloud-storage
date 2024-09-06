@@ -1,7 +1,10 @@
 const fs = require('fs')
 const config = require('config')
 
+/// Summary: file management
 class FileService {
+    /// Summary: creates a new dir
+    /// Args: file - File entity
     createDir(file) {
         const filePath = `${config.get('filePath')}\\${file.user}\\${file.path}`
         return new Promise(((resolve, reject) => {
@@ -18,6 +21,8 @@ class FileService {
         }))
     }
 
+    /// Summary: deletes the file
+    /// Args: file - File entity
     deleteFile(file) {
         const path = this.getPath(file)
         if (file.type === 'dir') {
@@ -27,6 +32,8 @@ class FileService {
         }
     }
 
+    /// Summary: gets file path
+    /// Args: file - File entity
     getPath(file) {
         return config.get('filePath') + '\\' + file.user + '\\' + file.path
     }

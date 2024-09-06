@@ -13,6 +13,7 @@ function App() {
     const isAuth = useSelector(state => state.user.isAuth)
     const dispatch = useDispatch()
 
+    /// Summary: authenticates a user on app load
     useEffect(() => {
         dispatch(auth())
     }, [dispatch])

@@ -4,6 +4,7 @@ import './uploader.css'
 import {useDispatch, useSelector} from "react-redux";
 import {hideUploader} from "../../../reducers/uploadReducer";
 
+/// Summary: file uploader
 const Uploader = () => {
     const files = useSelector(state => state.upload.files)
     const isVisible = useSelector(state => state.upload.isVisible)

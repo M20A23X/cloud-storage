@@ -7,11 +7,14 @@ import {pushToStack, setCurrentDir} from "../../../../reducers/fileReducer";
 import {deleteFile, downloadFile} from "../../../../actions/file";
 import sizeFormat from "../../../../utils/sizeFormat";
 
+/// Summary: file entry
 const File = ({file}) => {
     const dispatch = useDispatch()
     const currentDir = useSelector(state => state.files.currentDir)
     const fileView = useSelector(state => state.files.view)
 
+    /// Summary: open the clicked dir
+    /// Args: file - File entity
     function openDirHandler(file) {
         if (file.type === 'dir') {
             dispatch(pushToStack(currentDir))
@@ -19,16 +22,19 @@ const File = ({file}) => {
         }
     }
 
+    /// Summary: downloads target file
     function downloadClickHandler(e) {
         e.stopPropagation()
         downloadFile(file)
     }
 
+    /// Summary: deletes target file
     function deleteClickHandler(e) {
         e.stopPropagation()
         dispatch(deleteFile(file))
     }
 
+    /// View: list
     if (fileView === 'list') {
         return (
             <div className='file' onClick={() => openDirHandler(file)}>
@@ -43,6 +49,7 @@ const File = ({file}) => {
             </div>
         );
     }
+    /// View: plate
     if (fileView === 'plate') {
         return (
             <div className='file-plate' onClick={() => openDirHandler(file)}>
