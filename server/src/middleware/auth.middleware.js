@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken')
-const config = require('config')
 
 /// Summary: authentication check (JWT)
 module.exports = (req, res, next) => {
@@ -12,7 +11,7 @@ module.exports = (req, res, next) => {
         if (!token) {
             return res.status(401).json({message: 'Auth error'})
         }
-        req.user = jwt.verify(token, config.get('secretKey'))
+        req.user = jwt.verify(token, process.env.secretKey)
         next()
     } catch (e) {
         return res.status(401).json({message: 'Auth error'})

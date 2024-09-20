@@ -1,0 +1,11 @@
+{
+  "name": "cloud-storage",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "cd client/ && yarn && yarn build && cd ../server && yarn && yarn build",
+    "start": "yarn --cwd server/ start"
+  },
+  "author": "",
+  "license": "ISC"
+}

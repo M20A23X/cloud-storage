@@ -1,5 +1,4 @@
 const fileService = require('../services/fileService')
-const config = require('config')
 const fs = require('fs')
 const User = require('../models/User')
 const File = require('../models/File')
@@ -72,9 +71,9 @@ class FileController {
 
             let path;
             if (parent) {
-                path = `${config.get('filePath')}\\${user._id}\\${parent.path}\\${file.name}`
+                path = `${process.env.filePath}\\${user._id}\\${parent.path}\\${file.name}`
             } else {
-                path = `${config.get('filePath')}\\${user._id}\\${file.name}`
+                path = `${process.env.filePath}\\${user._id}\\${file.name}`
             }
 
             if (fs.existsSync(path)) {
@@ -151,7 +150,7 @@ class FileController {
             const file = req.files.file
             const user = await User.findById(req.user.id)
             const avatarName = Uuid.v4() + ".jpg"
-            file.mv(config.get('staticPath') + "\\" + avatarName)
+            file.mv(process.env.staticPath + "\\" + avatarName)
             user.avatar = avatarName
             await user.save()
             return res.json(user)
@@ -165,7 +164,7 @@ class FileController {
     async deleteAvatar(req, res) {
         try {
             const user = await User.findById(req.user.id)
-            fs.unlinkSync(config.get('staticPath') + "\\" + user.avatar)
+            fs.unlinkSync(process.env.staticPath + "\\" + user.avatar)
             user.avatar = null
             await user.save()
             return res.json(user)

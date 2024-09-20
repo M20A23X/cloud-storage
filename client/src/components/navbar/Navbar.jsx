@@ -15,6 +15,7 @@ const Navbar = () => {
     const isAuth = useSelector(state => state.user.isAuth)
     const currentDir = useSelector(state => state.files.currentDir)
     const currentUser = useSelector(state => state.user.currentUser)
+    
     const dispatch = useDispatch()
     const [searchName, setSearchName] = useState('')
     const [searchTimeout, setSearchTimeout] = useState(false)

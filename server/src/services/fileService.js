@@ -1,21 +1,22 @@
 const fs = require('fs')
-const config = require('config')
 
 /// Summary: file management
 class FileService {
     /// Summary: creates a new dir
     /// Args: file - File entity
     createDir(file) {
-        const filePath = `${config.get('filePath')}\\${file.user}\\${file.path}`
+        const filePath = `${process.env.filePath}\\${file.user}\\${file.path}`
+        console.log(filePath)
         return new Promise(((resolve, reject) => {
             try {
                 if (!fs.existsSync(filePath)) {
-                    fs.mkdirSync(filePath)
+                    fs.mkdirSync(filePath, {recursive: true})
                     return resolve({message: 'File was created'})
                 } else {
                     return reject({message: "File already exist"})
                 }
             } catch (e) {
+                console.log(e)
                 return reject({message: 'File error'})
             }
         }))
@@ -35,7 +36,7 @@ class FileService {
     /// Summary: gets file path
     /// Args: file - File entity
     getPath(file) {
-        return config.get('filePath') + '\\' + file.user + '\\' + file.path
+        return process.env.filePath + '\\' + file.user + '\\' + file.path
     }
 }
 
