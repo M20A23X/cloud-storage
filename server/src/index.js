@@ -8,13 +8,18 @@ const fileRouter = require("./routes/file.routes")
 const app = express()
 const PORT = config.get('serverPort')
 const corsMiddleware = require('./middleware/cors.middleware')
+const path = require("path");
 
 app.use(fileUpload({}))
 app.use(corsMiddleware)
 app.use(express.json())
 app.use(express.static('static'))
+app.use(express.static(path.join(__dirname, '..', '..', 'client', 'build')))
 app.use("/api/auth", authRouter)
 app.use("/api/files", fileRouter)
+app.use('*', function (request, response) {
+    response.sendFile(path.join(__dirname, '..', '..', 'client', 'build', 'index.html'));
+});
 
 const start = async () => {
     try {
